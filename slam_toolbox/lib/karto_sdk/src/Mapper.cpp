@@ -1593,7 +1593,7 @@ namespace karto
           CorrectPoses();
 
           m_pMapper->FireEndLoopClosure("Loop closed!");
-
+          m_pOptimizerCached = true;
           loopClosed = true;
         }
       }
@@ -1602,6 +1602,11 @@ namespace karto
     }
 
     return loopClosed;
+  }
+
+  kt_bool MapperGraph::IsLoopClosed()
+  {
+      return m_pOptimizerCached;
   }
 
   LocalizedRangeScan* MapperGraph::GetClosestScanToPose(const LocalizedRangeScanVector& rScans,
